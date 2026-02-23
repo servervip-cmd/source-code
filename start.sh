@@ -5,13 +5,14 @@ HOST=${HOST:-0.0.0.0}
 
 opencode serve --port $PORT --hostname $HOST &
 
-sleep 5
+sleep 8
 
-while true; do
-    if curl -s -o /dev/null -w "%{http_code}" http://localhost:$PORT > /dev/null 2>&1; then
-        echo "Ping $(date)"
-    fi
+(
+  while true; do
+    curl -s -o /dev/null http://localhost:$PORT
+    echo "Ping $(date)"
     sleep 300
-done &
+  done
+) &
 
 wait
