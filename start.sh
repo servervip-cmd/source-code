@@ -9,7 +9,7 @@ sleep 8
 
 (
   while true; do
-    curl -s -o /dev/null http://localhost:$PORT
+    curl -s -o /dev/null http://localhost:$PORT/
     echo "Ping $(date)"
     sleep 300
   done
